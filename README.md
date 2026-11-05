@@ -16,7 +16,7 @@ This is a high-converting landing page for **Digi Help Media**, a performance ma
 ## Before going live
 
 1. **WhatsApp:** set `WHATSAPP_NUMBER` in `config.js` (digits only, with country code, e.g. `919876543210`). Until you set it, the WhatsApp buttons point to the form and the floating button is hidden.
-2. **Lead form:** set `FORM_ENDPOINT` in `config.js` to a form backend that accepts JSON POST requests, such as [Formspree](https://formspree.io), Getform, a Zapier or Make webhook, or a Google Apps Script. Until you set it, submitting the form opens the visitor's email app, addressed to `CONTACT_EMAIL`.
+2. **Lead form → Supabase:** leads are saved to the `public.leads` table in Supabase (`SUPABASE_URL` and `SUPABASE_KEY` in `config.js`). The key is the project's *publishable* key, which is safe in the browser. Row level security lets visitors only **insert** leads, never read, change or delete them. To view leads, open the Supabase dashboard → Table Editor → `leads`. Use the `status` column (`new`, `contacted`, `qualified`, `won`, `lost`) to track follow-up. Never put the `service_role` or secret key in this site.
 3. **Contact email:** check that `CONTACT_EMAIL` is a real, monitored inbox.
 4. **Tracking (optional):** add your Google tag and Meta Pixel to `<head>`. After a successful submission, the form fires `generate_lead` (gtag/dataLayer) and `Lead` (fbq).
 5. **Privacy policy:** have `privacy.html` reviewed for your jurisdiction.

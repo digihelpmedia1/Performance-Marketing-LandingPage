@@ -166,13 +166,39 @@
       submitted_at: new Date().toISOString()
     };
 
-    if (CFG.FORM_ENDPOINT) {
-      submitBtn.classList.add("is-loading"); submitBtn.setAttribute("aria-busy", "true");
-      fetch(CFG.FORM_ENDPOINT, {
+    var request = null;
+    if (CFG.SUPABASE_URL && CFG.SUPABASE_KEY) {
+      request = fetch(CFG.SUPABASE_URL.replace(/\/$/, "") + "/rest/v1/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": CFG.SUPABASE_KEY,
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({
+          full_name: data.name,
+          business_name: data.business,
+          email: data.email,
+          phone: data.phone,
+          website: data.website || null,
+          service: data.service,
+          challenge: data.challenge,
+          source: data.source,
+          page_url: data.page.slice(0, 500),
+          user_agent: navigator.userAgent.slice(0, 500)
+        })
+      });
+    } else if (CFG.FORM_ENDPOINT) {
+      request = fetch(CFG.FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(data)
-      }).then(function (r) {
+      });
+    }
+
+    if (request) {
+      submitBtn.classList.add("is-loading"); submitBtn.setAttribute("aria-busy", "true");
+      request.then(function (r) {
         if (!r.ok) throw new Error("Bad response");
         showThanks(data);
       }).catch(function () {
