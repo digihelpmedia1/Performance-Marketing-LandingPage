@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="112 128 248 214" role="img" aria-label="Digi Help Media">
+  <defs>
+    <clipPath id="d-shape">
+      <path d="M158 160H246a90 88 0 0 1 0 176H158Z"/>
+    </clipPath>
+  </defs>
+  <!-- D with counter -->
+  <path fill="#F65000" fill-rule="evenodd" d="M158 160H246a90 88 0 0 1 0 176H158ZM208 212v74h40a38 37 0 0 0 0-74Z"/>
+  <!-- light wedge cut into the D -->
+  <path fill="#fff" d="M158 182 205 162 205 244Z" clip-path="url(#d-shape)"/>
+  <path fill="#F65000" d="M158 160h47v2l-47 20Z"/>
+  <!-- network lines: orange outside the D, white inside -->
+  <g fill="none" stroke="#F65000" stroke-width="4" stroke-linecap="round">
+    <path d="M125 172 205 162M125 172 175 195M175 195 205 162M175 195 205 244M205 162V244"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" clip-path="url(#d-shape)">
+    <path d="M125 172 205 162M125 172 175 195M175 195 205 162M175 195 205 244M205 162V244"/>
+  </g>
+  <!-- nodes -->
+  <circle cx="125" cy="172" r="8" fill="#F65000"/>
+  <circle cx="175" cy="195" r="6.5" fill="#fff" stroke="#F65000" stroke-width="4"/>
+  <circle cx="205" cy="162" r="11" fill="#fff" stroke="#F65000" stroke-width="4.5"/>
+  <circle cx="133" cy="140" r="2.6" fill="#F65000"/>
+  <circle cx="147" cy="156" r="4.6" fill="#F65000"/>
+  <circle cx="171" cy="158" r="3.4" fill="#F65000"/>
+</svg>
