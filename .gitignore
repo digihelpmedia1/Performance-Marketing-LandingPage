@@ -4,3 +4,4 @@ node_modules/
 .taste-skill/
 .claude/
 *.log
+dist/
